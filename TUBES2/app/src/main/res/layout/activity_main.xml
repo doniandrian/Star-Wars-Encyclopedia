@@ -158,7 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_btn2"
         android:id="@+id/list_item"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
     </ListView>
 
 </RelativeLayout>
