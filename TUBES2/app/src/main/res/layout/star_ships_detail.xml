@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:orientation="vertical"
+
+        >
+
+
+
+
+        <ImageView
+            android:id="@+id/imageItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonBack"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/picture_holder_icon" />
+
+        <TextView
+            android:id="@+id/namaItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="5dp"
+            android:text="Star Ships Name"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/modelTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namaItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Model:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/starShipClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modelTxt"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Starship Class:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/starShipClass"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Manufacturer:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/costInCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/manufacturer"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Cost in credit:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/costInCredit"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Length:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/crew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/length"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Crew:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/passenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/crew"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Passenger:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/maxSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passenger"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Max atmosphering speed:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/hyperDriveRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maxSpeed"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Hyper Drive Rating:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+
+            />
+
+        <TextView
+            android:id="@+id/MGLT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hyperDriveRating"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="MGLT:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/cargoCap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MGLT"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Cargo Capacity:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+
+            />
+
+        <TextView
+            android:id="@+id/consumables"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cargoCap"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Consumables:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/consumables"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Description:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/pilots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilots"
+            android:textColor="@color/white"
+            android:layout_below="@id/description"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="30dp"
+            />
+
+        <ListView
+            android:id="@+id/listViewSpecies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleSpecies"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

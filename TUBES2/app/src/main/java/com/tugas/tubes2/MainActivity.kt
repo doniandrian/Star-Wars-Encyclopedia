@@ -8,6 +8,8 @@ import android.widget.TextView
 import com.tugas.tubes2.databinding.ActivityMainBinding
 import android.widget.ListView
 import android.widget.ProgressBar
+import androidx.appcompat.widget.SearchView
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btn_starships: Button
     private lateinit var btn_vehicles: Button
     private lateinit var text_choosed: TextView
+    private lateinit var search_view: SearchView
     private lateinit var list_item: ListView
     private lateinit var progress_bar: ProgressBar
 
@@ -33,11 +36,10 @@ class MainActivity : AppCompatActivity() {
         btn_starships = binding.btnStarships
         btn_vehicles = binding.btnVehicles
         text_choosed = binding.textBtnChoosed
-        progress_bar = binding.loading
-
-        list_item = binding.listItem
-
         text_choosed.text = btn_films.text
+        search_view = binding.searchView
+        list_item = binding.listItem
+        progress_bar = binding.loading
 
         btn_films.setOnClickListener {
             text_choosed.text = btn_films.text
@@ -61,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
             APICall.getResult(this, "people?page=1&limit=83") { dataResult ->
                 val peopleList = dataResult.results
-
 
                 val adapter = ResultListAdapter(this, peopleList)
                 list_item.adapter = adapter
@@ -129,5 +130,20 @@ class MainActivity : AppCompatActivity() {
                 progress_bar.visibility = View.GONE
             }
         }
+
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (text_choosed.text == btn_films.text) {
+                    (list_item.adapter as FilmsListAdapter).filter.filter(newText)
+                }
+                else {
+                    (list_item.adapter as ResultListAdapter).filter.filter(newText)
+                }
+                return true
+            }
+        })
     }
 }

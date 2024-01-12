@@ -18,7 +18,9 @@
         android:textColor="@color/title"
         android:textSize="45dp"
         android:fontFamily="sans-serif-medium"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +29,7 @@
         android:layout_below="@+id/title"
         android:text="ENCYCLOPEDIA"
         android:textColor="@color/title"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:fontFamily="sans-serif-medium"
         />
 
@@ -37,8 +39,10 @@
         android:orientation="horizontal"
         android:layout_below="@id/title"
         android:id="@+id/ll_btn_1"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true">
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+
+        >
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
@@ -121,19 +125,22 @@
         android:textSize="30dp"
         android:fontFamily="sans-serif-medium"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        >
     </TextView>
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/searchView"
         android:layout_below="@id/text_btn_choosed"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        app:iconifiedByDefault="false"
-        android:background="@drawable/bg_rounded">
+        android:background="@drawable/bg_rounded"
+        android:focusable="false"
+        app1:iconifiedByDefault="false"
+        >
     </androidx.appcompat.widget.SearchView>
 
     <ListView
@@ -141,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/searchView"
         android:id="@+id/list_item"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:divider="@color/bg"
