@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import retrofit.*
 
-object ApiCall {
+object APICall {
     const val baseUrl = "https://www.swapi.tech/api/"
 
     fun getRetrovit(): Retrofit {
@@ -14,8 +14,8 @@ object ApiCall {
         build()
     }
 
-    fun getApiService(): ApiService {
-        return getRetrovit().create(ApiService::class.java)
+    fun getApiService(): APIService {
+        return getRetrovit().create(APIService::class.java)
     }
 
     fun getResult(context: Context, endpoint: String, callback: (DataResult) -> Unit) {
@@ -32,23 +32,4 @@ object ApiCall {
             }
         })
     }
-
-
-//    fun getResult(context: Context, endpoint: String, callback: (DataResult) -> Unit) {
-////        val retrofit: Retrofit = Retrofit.Builder().baseUrl("https://www.swapi.tech/api/")
-////            .addConverterFactory(GsonConverterFactory.create()).build()
-////        val service: ApiService = retrofit.create<ApiService>(ApiService::class.java)
-////        val call: Call<DataResult> = service.getResult(endpoint)
-////        call.enqueue(object : Callback<DataResult> {
-////            override fun onResponse(response: Response<DataResult>?, retrofit: Retrofit?) {
-////                if(response!!.isSuccess){
-////                    val result: DataResult = response.body() as DataResult
-////                    callback(result)
-////                }
-////            }
-////            override fun onFailure(t: Throwable?) {
-////                Toast.makeText(context, "Request Fail", Toast.LENGTH_SHORT).show()
-////            }
-////        })
-////    }
 }
