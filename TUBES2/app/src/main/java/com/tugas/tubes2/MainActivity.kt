@@ -10,6 +10,7 @@ import android.widget.ListView
 import android.widget.ProgressBar
 import androidx.appcompat.widget.SearchView
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var btn_films: Button
