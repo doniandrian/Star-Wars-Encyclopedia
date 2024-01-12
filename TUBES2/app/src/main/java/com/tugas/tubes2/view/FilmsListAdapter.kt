@@ -1,4 +1,4 @@
-package com.tugas.tubes2
+package com.tugas.tubes2.view
 
 import android.app.Activity
 import android.view.View
@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.widget.Filter
 import android.widget.Filterable
+import com.tugas.tubes2.APICall_Films
+import com.tugas.tubes2.R
+import com.tugas.tubes2.model.FilmsResult
 import java.util.ArrayList
 
 class FilmsListAdapter(private val activity: Activity, private val filmList: List<FilmsResult.Film>) : BaseAdapter(), Filterable {

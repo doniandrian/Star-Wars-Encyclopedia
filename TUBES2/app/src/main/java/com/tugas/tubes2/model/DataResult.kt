@@ -1,4 +1,4 @@
-package com.tugas.tubes2
+package com.tugas.tubes2.model
 
 import java.io.Serializable
 

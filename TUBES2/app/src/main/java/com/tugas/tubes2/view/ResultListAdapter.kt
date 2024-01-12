@@ -1,4 +1,4 @@
-package com.tugas.tubes2
+package com.tugas.tubes2.view
 
 import android.app.Activity
 import android.view.View
@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.widget.Filter
 import android.widget.Filterable
+import com.tugas.tubes2.APICall
+import com.tugas.tubes2.model.DataResult
+import com.tugas.tubes2.R
 import java.util.ArrayList
 
 class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>) : BaseAdapter(), Filterable {
@@ -53,6 +56,8 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
                 .centerCrop()
                 .into(viewHolder.image)
         }
+
+
 
         return view
     }
