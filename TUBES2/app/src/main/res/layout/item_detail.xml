@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:orientation="vertical"
+
+        >
+
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/bg"
+            android:scaleType="centerInside"
+            android:src="@drawable/back_icon" />
+
+        <ImageView
+            android:id="@+id/imageItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonBack"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/picture_holder_icon" />
+
+        <TextView
+            android:id="@+id/namaItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="5dp"
+            android:text="Film Title"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/producerTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namaItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Producer:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/episodeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/producerTxt"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Episode:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/directorTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/episodeTxt"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Director:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/releaseDateTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/directorTxt"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Release Date:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/releaseDateTxt"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Description:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/titleCharacters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Characters"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/description"
+            />
+
+        <ListView
+            android:id="@+id/listViewCharacters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleCharacters"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+        <TextView
+            android:id="@+id/titlePlanets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Planets"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/listViewCharacters"
+            />
+
+        <ListView
+            android:id="@+id/listViewPlanets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titlePlanets"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+        <TextView
+            android:id="@+id/titleStarShips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Starships"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/listViewPlanets"
+            />
+
+        <ListView
+            android:id="@+id/listViewStarShips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleStarShips"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+        <TextView
+            android:id="@+id/titleVehicles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Starships"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/listViewStarShips"
+            />
+
+        <ListView
+            android:id="@+id/listViewVehicles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleVehicles"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+        <TextView
+            android:id="@+id/titleSpecies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Species"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/listViewVehicles"
+            />
+
+        <ListView
+            android:id="@+id/listViewSpecies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleSpecies"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
