@@ -38,4 +38,3 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
         val uid: TextView = view.findViewById(R.id.uid)
     }
 }
-

@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btn_starships: Button
     private lateinit var btn_vehicles: Button
     private lateinit var text_choosed: TextView
-    private lateinit var btn_previous: Button
-    private lateinit var btn_next: Button
     private lateinit var list_item: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,22 +30,31 @@ class MainActivity : AppCompatActivity() {
         btn_starships = binding.btnStarships
         btn_vehicles = binding.btnVehicles
         text_choosed = binding.textBtnChoosed
-        btn_previous = binding.btnPrevious
-        btn_next = binding.btnNext
+
         list_item = binding.listItem
 
         text_choosed.text = btn_films.text
 
         btn_films.setOnClickListener {
-            text_choosed.text = btn_films.text
-
+//            text_choosed.text = btn_films.text
+//
+//            ApiCall.getResult(this, "films") { dataResult ->
+//                val filmsList = dataResult.result
+//
+//
+//                val adapter = ResultListAdapter(this, filmsList)
+//                list_item.adapter = adapter
+//            }
         }
+
+
 
         btn_people.setOnClickListener {
             text_choosed.text = btn_people.text
 
-            ApiCall().getResult(this, "people?page=1&limit=83") { dataResult ->
+            ApiCall.getResult(this, "people?page=1&limit=83") { dataResult ->
                 val peopleList = dataResult.results
+
 
                 val adapter = ResultListAdapter(this, peopleList)
                 list_item.adapter = adapter
@@ -57,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         btn_planets.setOnClickListener {
             text_choosed.text = btn_planets.text
 
-            ApiCall().getResult(this, "planets?page=1&limit=60") { dataResult ->
+            ApiCall.getResult(this, "planets?page=1&limit=60") { dataResult ->
                 val planetsList = dataResult.results
 
                 val adapter = ResultListAdapter(this, planetsList)
@@ -68,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         btn_species.setOnClickListener {
             text_choosed.text = btn_species.text
 
-            ApiCall().getResult(this, "species?page=1&limit=37") { dataResult ->
+            ApiCall.getResult(this, "species?page=1&limit=37") { dataResult ->
                 val speciesList = dataResult.results
 
                 val adapter = ResultListAdapter(this, speciesList)
@@ -79,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         btn_starships.setOnClickListener {
             text_choosed.text = btn_starships.text
 
-            ApiCall().getResult(this, "starships?page=1&limit=36") { dataResult ->
+            ApiCall.getResult(this, "starships?page=1&limit=36") { dataResult ->
                 val starshipsList = dataResult.results
 
                 val adapter = ResultListAdapter(this, starshipsList)
@@ -90,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         btn_vehicles.setOnClickListener {
             text_choosed.text = btn_vehicles.text
 
-            ApiCall().getResult(this, "vehicles?page=1&limit=39") { dataResult ->
+            ApiCall.getResult(this, "vehicles?page=1&limit=39") { dataResult ->
                 val vehiclesList = dataResult.results
 
                 val adapter = ResultListAdapter(this, vehiclesList)

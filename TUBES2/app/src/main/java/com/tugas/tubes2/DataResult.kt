@@ -1,8 +1,11 @@
 package com.tugas.tubes2
 
+import java.io.Serializable
+
+
 data class DataResult(
     var results: List<Result>,
-) : java.io.Serializable {
+) : Serializable {
     data class Result(
         var uid: String,
         var name: String,
@@ -10,3 +13,14 @@ data class DataResult(
     )
 }
 
+////data class FilmsResult(
+////    var title: String,
+////    var episode_id: Int,
+////    override var url: String
+////) : DisplayData, Serializable {
+////    override val name: String
+////        get() = title
+////    override val uid: String
+////        get() = episode_id.toString()
+////}
+//
