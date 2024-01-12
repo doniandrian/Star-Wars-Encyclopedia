@@ -45,7 +45,7 @@
         android:layout_toRightOf="@id/cardview_img"
 
         android:textColor="@color/item_detail"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:fontFamily="sans-serif-medium"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
