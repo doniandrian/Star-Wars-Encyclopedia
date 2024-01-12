@@ -35,7 +35,7 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
         //filter api type to get image if its people it will load characters
         if(resultList[position].url.contains("people")){
             Glide.with(viewHolder.image.context)
-                .load(ApiCall.BASE_IMAGE_URL + "characters/" + uids[position] + ".jpg")
+                .load(APICall.BASE_IMAGE_URL + "characters/" + uids[position] + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .centerCrop()
@@ -46,7 +46,7 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
             val category = resultList[position].url.split("/")[4]
 
             Glide.with(viewHolder.image.context)
-                .load(ApiCall.BASE_IMAGE_URL + category + "/" + uids[position] + ".jpg")
+                .load(APICall.BASE_IMAGE_URL + category + "/" + uids[position] + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .centerCrop()

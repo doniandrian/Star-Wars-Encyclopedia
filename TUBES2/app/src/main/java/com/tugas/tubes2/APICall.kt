@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import retrofit.*
 
-object ApiCall {
+object APICall {
     const val baseUrl = "https://www.swapi.tech/api/"
     const val BASE_IMAGE_URL = "https://starwars-visualguide.com/assets/img/"
 
@@ -16,8 +16,8 @@ object ApiCall {
         build()
     }
 
-    fun getApiService(): ApiService {
-        return getRetrovit().create(ApiService::class.java)
+    fun getApiService(): APIService {
+        return getRetrovit().create(APIService::class.java)
     }
 
     fun getResult(context: Context, endpoint: String, callback: (DataResult) -> Unit) {
@@ -34,7 +34,4 @@ object ApiCall {
             }
         })
     }
-
-
-
 }
