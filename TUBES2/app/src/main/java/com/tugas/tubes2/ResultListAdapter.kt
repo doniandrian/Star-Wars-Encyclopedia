@@ -32,7 +32,6 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
         viewHolder.name.text = names[position]
         viewHolder.uid.text = "UID : " + uids[position]
 
-        //filter api type to get image if its people it will load characters
         if(resultList[position].url.contains("people")){
             Glide.with(viewHolder.image.context)
                 .load(APICall.BASE_IMAGE_URL + "characters/" + uids[position] + ".jpg")

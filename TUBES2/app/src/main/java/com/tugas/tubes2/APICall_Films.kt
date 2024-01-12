@@ -6,6 +6,7 @@ import retrofit.*
 
 object APICall_Films {
     const val baseUrl = "https://www.swapi.tech/api/"
+    const val BASE_IMAGE_URL2 = "https://starwars-visualguide.com/assets/img/"
 
 
     fun getRetrofit(): Retrofit {
