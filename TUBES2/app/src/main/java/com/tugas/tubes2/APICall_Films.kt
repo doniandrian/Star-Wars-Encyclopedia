@@ -2,6 +2,10 @@ package com.tugas.tubes2
 
 import android.content.Context
 import android.widget.Toast
+import com.tugas.tubes2.model.FilmsResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit.*
 
 object APICall_Films {
@@ -20,18 +24,21 @@ object APICall_Films {
     }
 
     fun getFilmResult(context: Context, endpoint: String, callback: (FilmsResult) -> Unit) {
-        val call: Call<FilmsResult> = getApiService().getFilmsResult(endpoint)
-        call.enqueue(object : Callback<FilmsResult> {
-            override fun onResponse(response: Response<FilmsResult>, retrofit: Retrofit) {
-                if (response!!.isSuccess) {
-                    val result: FilmsResult = response.body() as FilmsResult
-                    callback(result)
+        GlobalScope.launch (Dispatchers.IO){
+            val call: Call<FilmsResult> = getApiService().getFilmsResult(endpoint)
+            call.enqueue(object : Callback<FilmsResult> {
+                override fun onResponse(response: Response<FilmsResult>?, retrofit: Retrofit?) {
+                    if(response!!.isSuccess){
+                        val result: FilmsResult = response.body() as FilmsResult
+                        callback(result)
+                    }
                 }
-            }
+                override fun onFailure(t: Throwable?) {
+                    Toast.makeText(context, "Request Fail", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
 
-            override fun onFailure(t: Throwable) {
-                Toast.makeText(context, "Request Fail", Toast.LENGTH_SHORT).show()
-            }
-        })
+
     }
 }

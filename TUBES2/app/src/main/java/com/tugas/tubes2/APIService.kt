@@ -1,5 +1,7 @@
 package com.tugas.tubes2
 
+import com.tugas.tubes2.model.DataResult
+import com.tugas.tubes2.model.FilmsResult
 import retrofit.Call
 import retrofit.http.GET
 import retrofit.http.Url
