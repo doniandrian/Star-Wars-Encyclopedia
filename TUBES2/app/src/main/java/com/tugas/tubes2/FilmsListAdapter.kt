@@ -7,18 +7,19 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import android.widget.Filter
+import android.widget.Filterable
+import java.util.ArrayList
 
-class FilmsListAdapter(private val activity: Activity, private val filmList: List<FilmsResult.Film>) : BaseAdapter() {
+class FilmsListAdapter(private val activity: Activity, private val filmList: List<FilmsResult.Film>) : BaseAdapter(), Filterable {
 
-    private val titles: List<String> = filmList.map { it.properties.title }
-    private val releaseDates: List<String> = filmList.map { it.properties.release_date }
-    private val uid: List<String> = filmList.map { it.uid }
+    private var filteredFilms: List<FilmsResult.Film> = filmList
     override fun getCount(): Int {
-        return filmList.size
+        return filteredFilms.size
     }
 
     override fun getItem(position: Int): Any {
-        return filmList[position]
+        return filteredFilms[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -29,13 +30,13 @@ class FilmsListAdapter(private val activity: Activity, private val filmList: Lis
         val view: View = convertView ?: activity.layoutInflater.inflate(R.layout.item_list, null)
         val viewHolder = ViewHolder(view)
 
-        viewHolder.name.text = titles[position]
-        viewHolder.uid.text = "Release Date: " + releaseDates[position]
+        viewHolder.name.text = filteredFilms[position].properties.title
+        viewHolder.uid.text = "Release Date: " + filteredFilms[position].properties.release_date
 
         //ambil category dari url
-        val category = filmList[position].properties.url.split("/")[4]
+        val category = filteredFilms[position].properties.url.split("/")[4]
         Glide.with(viewHolder.image.context)
-            .load(APICall_Films.BASE_IMAGE_URL2 + category + "/" + uid[position] + ".jpg")
+            .load(APICall_Films.BASE_IMAGE_URL2 + category + "/" + filteredFilms[position].uid + ".jpg")
             .placeholder(R.drawable.ic_launcher_foreground)
             .error(R.drawable.ic_launcher_foreground)
             .centerCrop()
@@ -43,6 +44,39 @@ class FilmsListAdapter(private val activity: Activity, private val filmList: Lis
             .into(viewHolder.image)
 
         return view
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+
+                if (constraint.isNullOrEmpty()) {
+                    filterResults.values = filmList
+                    filterResults.count = filmList.size
+                }
+                else {
+                    val filteredList = ArrayList<FilmsResult.Film>()
+                    val filterPattern = constraint.toString().lowercase().trim()
+
+                    for (result in filmList) {
+                        if (result.properties.title.lowercase().contains(filterPattern)) {
+                            filteredList.add(result)
+                        }
+                    }
+
+                    filterResults.values = filteredList
+                    filterResults.count = filteredList.size
+                }
+
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredFilms = results?.values as List<FilmsResult.Film>
+                notifyDataSetChanged()
+            }
+        }
     }
 
     private class ViewHolder(view: View) {

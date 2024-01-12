@@ -7,18 +7,20 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import android.widget.Filter
+import android.widget.Filterable
+import java.util.ArrayList
 
-class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>) : BaseAdapter() {
+class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>) : BaseAdapter(), Filterable {
 
-    private val names: List<String> = resultList.map { it.name }
-    private val uids: List<String> = resultList.map { it.uid }
+    private var filteredResults: List<DataResult.Result> = resultList
 
     override fun getCount(): Int {
-        return resultList.size
+        return filteredResults.size
     }
 
     override fun getItem(position: Int): Any {
-        return resultList[position]
+        return filteredResults[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -29,38 +31,68 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
         val view: View = convertView ?: activity.layoutInflater.inflate(R.layout.item_list, null)
         val viewHolder = ViewHolder(view)
 
-        viewHolder.name.text = names[position]
-        viewHolder.uid.text = "UID : " + uids[position]
+        viewHolder.name.text = filteredResults[position].name
+        viewHolder.uid.text = "UID : " + filteredResults[position].uid
 
-        if(resultList[position].url.contains("people")){
+        if (filteredResults[position].url.contains("people")) {
             Glide.with(viewHolder.image.context)
-                .load(APICall.BASE_IMAGE_URL + "characters/" + uids[position] + ".jpg")
+                .load(APICall.BASE_IMAGE_URL + "characters/" + filteredResults[position].uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .centerCrop()
-
                 .into(viewHolder.image)
-        }else{
+        }
+        else {
             //ambil category dari url
-            val category = resultList[position].url.split("/")[4]
+            val category = filteredResults[position].url.split("/")[4]
 
             Glide.with(viewHolder.image.context)
-                .load(APICall.BASE_IMAGE_URL + category + "/" + uids[position] + ".jpg")
+                .load(APICall.BASE_IMAGE_URL + category + "/" + filteredResults[position].uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .centerCrop()
-
                 .into(viewHolder.image)
-
         }
 
-
         return view
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+
+                if (constraint.isNullOrEmpty()) {
+                    filterResults.values = resultList
+                    filterResults.count = resultList.size
+                }
+                else {
+                    val filteredList = ArrayList<DataResult.Result>()
+                    val filterPattern = constraint.toString().lowercase().trim()
+
+                    for (result in resultList) {
+                        if (result.name.lowercase().contains(filterPattern)) {
+                            filteredList.add(result)
+                        }
+                    }
+
+                    filterResults.values = filteredList
+                    filterResults.count = filteredList.size
+                }
+
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                filteredResults = results?.values as List<DataResult.Result>
+                notifyDataSetChanged()
+            }
+        }
     }
 
     private class ViewHolder(view: View) {
         val name: TextView = view.findViewById(R.id.name)
         val uid: TextView = view.findViewById(R.id.uid)
-        var image: ImageView =  view.findViewById(R.id.item_img)
+        var image: ImageView = view.findViewById(R.id.item_img)
     }
 }

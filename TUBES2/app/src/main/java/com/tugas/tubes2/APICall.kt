@@ -8,7 +8,6 @@ object APICall {
     const val baseUrl = "https://www.swapi.tech/api/"
     const val BASE_IMAGE_URL = "https://starwars-visualguide.com/assets/img/"
 
-
     fun getRetrovit(): Retrofit {
         return Retrofit.Builder().
         baseUrl(baseUrl).
