@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/title"
+        android:text="STAR WARS"
+        android:textColor="@color/title"
+        android:textSize="45dp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/subtitle"
+        android:layout_below="@+id/title"
+        android:text="ENCYCLOPEDIA"
+        android:textColor="@color/title"
+        android:textSize="15dp"
+        android:fontFamily="sans-serif-medium"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/title"
+        android:id="@+id/ll_btn_1"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_films"
+            android:text="Films"
+            android:textColor="@color/white"
+            android:background="@drawable/button">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_people"
+            android:text="People"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:layout_marginLeft="15dp">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_planets"
+            android:text="Planets"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:layout_marginLeft="15dp">
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ll_btn_1"
+        android:id="@+id/ll_btn_2"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_species"
+            android:text="Species"
+            android:textColor="@color/white"
+            android:background="@drawable/button">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_starships"
+            android:text="Starships"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:layout_marginLeft="15dp">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_vehicles"
+            android:text="Vehicles"
+            android:textColor="@color/white"
+            android:background="@drawable/button"
+            android:layout_marginLeft="15dp">
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_btn_choosed"
+        android:layout_below="@id/ll_btn_2"
+        android:text="..."
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp">
+    </TextView>
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_below="@id/text_btn_choosed"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:iconifiedByDefault="false"
+        android:background="@drawable/bg_rounded">
+    </androidx.appcompat.widget.SearchView>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:id="@+id/list_item"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:divider="@color/bg"
+        android:dividerHeight="5dp">
+    </ListView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_centerInParent="true"
+        android:id="@+id/loading"
+        android:layout_marginTop="200dp"
+        android:indeterminateTint="@color/cardview_light_background"
+        android:visibility="gone"/>
+
+</RelativeLayout>

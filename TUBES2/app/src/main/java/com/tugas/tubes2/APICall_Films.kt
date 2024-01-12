@@ -2,6 +2,7 @@ package com.tugas.tubes2
 
 import android.content.Context
 import android.widget.Toast
+import com.tugas.tubes2.model.FilmsResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ object APICall_Films {
             call.enqueue(object : Callback<FilmsResult> {
                 override fun onResponse(response: Response<FilmsResult>?, retrofit: Retrofit?) {
                     if(response!!.isSuccess){
-                        val result: FilmsResult= response.body() as FilmsResult
+                        val result: FilmsResult = response.body() as FilmsResult
                         callback(result)
                     }
                 }
