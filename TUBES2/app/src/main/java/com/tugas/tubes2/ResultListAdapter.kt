@@ -4,7 +4,9 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
 class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>) : BaseAdapter() {
 
@@ -30,11 +32,36 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
         viewHolder.name.text = names[position]
         viewHolder.uid.text = "UID : " + uids[position]
 
+        //filter api type to get image if its people it will load characters
+        if(resultList[position].url.contains("people")){
+            Glide.with(viewHolder.image.context)
+                .load(ApiCall.BASE_IMAGE_URL + "characters/" + uids[position] + ".jpg")
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+                .centerCrop()
+
+                .into(viewHolder.image)
+        }else{
+            //ambil category dari url
+            val category = resultList[position].url.split("/")[4]
+
+            Glide.with(viewHolder.image.context)
+                .load(ApiCall.BASE_IMAGE_URL + category + "/" + uids[position] + ".jpg")
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+                .centerCrop()
+
+                .into(viewHolder.image)
+
+        }
+
+
         return view
     }
 
     private class ViewHolder(view: View) {
         val name: TextView = view.findViewById(R.id.name)
         val uid: TextView = view.findViewById(R.id.uid)
+        var image: ImageView =  view.findViewById(R.id.item_img)
     }
 }

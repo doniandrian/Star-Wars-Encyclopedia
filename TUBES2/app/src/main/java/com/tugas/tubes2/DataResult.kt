@@ -9,7 +9,7 @@ data class DataResult(
     data class Result(
         var uid: String,
         var name: String,
-        var url: String
+        var url: String,
     )
 }
 
