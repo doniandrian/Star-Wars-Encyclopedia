@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/bg"
+        android:orientation="vertical"
+
+        >
+
+
+
+
+
+        <ImageView
+            android:id="@+id/imageItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/picture_holder_icon"
+            android:layout_below="@+id/buttonBack"
+            android:layout_marginTop="50dp"
+            />
+
+        <TextView
+            android:id="@+id/namaItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Planet Name"
+            android:textColor="@color/white"
+            android:layout_below="@id/imageItem"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="35dp"
+            />
+
+        <TextView
+            android:id="@+id/diameter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diameter:"
+            android:textColor="@color/white"
+            android:layout_below="@id/orbital"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/rotation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rotation period:"
+            android:textColor="@color/white"
+            android:layout_below="@id/namaItem"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/orbital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orbital period:"
+            android:textColor="@color/white"
+            android:layout_below="@id/rotation"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gravity:"
+            android:textColor="@color/white"
+            android:layout_below="@id/climate"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/population"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Population:"
+            android:textColor="@color/white"
+            android:layout_below="@id/surfaceWater"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/climate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Climate:"
+            android:textColor="@color/white"
+            android:layout_below="@id/diameter"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/terrain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terrain:"
+            android:textColor="@color/white"
+            android:layout_below="@id/gravity"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/surfaceWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surface water:"
+            android:textColor="@color/white"
+            android:layout_below="@id/terrain"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:textColor="@color/white"
+            android:layout_below="@id/surfaceWater"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:textSize="22dp"
+            />
+
+    </LinearLayout>
+</ScrollView>

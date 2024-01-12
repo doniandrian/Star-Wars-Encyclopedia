@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:orientation="vertical"
+
+        >
+
+
+
+
+        <ImageView
+            android:id="@+id/imageItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonBack"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/picture_holder_icon" />
+
+        <TextView
+            android:id="@+id/namaItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="5dp"
+            android:text="Vehicles Name"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namaItem"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Model:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/vehicleClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/model"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Vehicle Class:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vehicleClass"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Manufacturer:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/costInCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/manufacturer"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Cost in Credit:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/costInCredit"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Length:"
+            android:textColor="@color/white"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/crew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Crew:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/length"
+            />
+
+        <TextView
+            android:id="@+id/passenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Passenger:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/crew"
+            />
+
+        <TextView
+            android:id="@+id/maxSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Max atmosphering speed:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/passenger"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/cargoCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Cargo Capacity:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/maxSpeed"
+            />
+
+        <TextView
+            android:id="@+id/consumables"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Consumables:"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/cargoCapacity"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="Description::"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:layout_below="@id/consumables"
+            />
+
+        <TextView
+            android:id="@+id/titleFilms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Films"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/consumables"
+            />
+
+        <ListView
+            android:id="@+id/listViewFilms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleFilms"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+        <TextView
+            android:id="@+id/titlePilots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="Pilots"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_below="@id/listViewFilms"
+            />
+
+        <ListView
+            android:id="@+id/listViewPilots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titlePilots"
+            android:layout_weight="0"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            tools:listitem="@layout/template_listview"
+            />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
