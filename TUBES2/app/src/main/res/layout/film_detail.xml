@@ -13,9 +13,6 @@
 
         >
 
-
-
-
         <ImageView
             android:id="@+id/imageItem"
             android:layout_width="match_parent"
