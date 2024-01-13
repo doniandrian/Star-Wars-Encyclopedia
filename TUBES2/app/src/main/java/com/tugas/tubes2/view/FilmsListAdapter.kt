@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import android.widget.Filter
 import android.widget.Filterable
-import com.tugas.tubes2.APICall_Films
+import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
 import com.tugas.tubes2.model.FilmsResult
 import java.util.ArrayList
@@ -39,7 +39,7 @@ class FilmsListAdapter(private val activity: Activity, private val filmList: Lis
         //ambil category dari url
         val category = filteredFilms[position].properties.url.split("/")[4]
         Glide.with(viewHolder.image.context)
-            .load(APICall_Films.BASE_IMAGE_URL2 + category + "/" + filteredFilms[position].uid + ".jpg")
+            .load(BASE_IMAGE_URL + category + "/" + filteredFilms[position].uid + ".jpg")
             .placeholder(R.drawable.ic_launcher_foreground)
             .error(R.drawable.ic_launcher_foreground)
             .centerCrop()
