@@ -13,12 +13,23 @@
 
         >
 
+        <TextView
+            android:id="@+id/deskripsiTxtFilm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="30dp"
+            android:text="Deskripsi"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
         <ImageView
             android:id="@+id/imageItem"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buttonBack"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
             android:src="@drawable/picture_holder_icon" />
 
         <TextView
@@ -26,18 +37,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageItem"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
             android:text="Film Title"
-            android:textColor="@color/white"
-            android:textSize="35dp" />
+            android:textColor="@color/item_name"
+            android:textSize="35dp"
+            android:layout_marginBottom="5dp"
+            />
 
         <TextView
             android:id="@+id/producerTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/namaItem"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Producer:"
             android:textColor="@color/white"
@@ -48,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/producerTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Episode:"
             android:textColor="@color/white"
@@ -59,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/episodeTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Director:"
             android:textColor="@color/white"
@@ -70,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/directorTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Release Date:"
             android:textColor="@color/white"
@@ -81,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/releaseDateTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Description:"
             android:textColor="@color/white"

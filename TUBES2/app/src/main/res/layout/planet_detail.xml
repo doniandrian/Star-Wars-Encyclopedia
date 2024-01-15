@@ -12,14 +12,24 @@
         android:orientation="vertical"
 
         >
+        <TextView
+            android:id="@+id/deskripsiTxtPlanet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="30dp"
+            android:text="Deskripsi"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
 
         <ImageView
             android:id="@+id/imageItem"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/picture_holder_icon"
             android:layout_below="@+id/buttonBack"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/picture_holder_icon"
             />
 
         <TextView
@@ -27,10 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Planet Name"
-            android:textColor="@color/white"
+            android:textColor="@color/item_name"
             android:layout_below="@id/imageItem"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="35dp"
             />
 
@@ -42,7 +52,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/orbital"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -54,7 +64,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/namaItem"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -66,7 +76,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/rotation"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -78,7 +88,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/climate"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -90,7 +100,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/surfaceWater"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -104,7 +114,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/diameter"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -118,7 +128,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/gravity"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -130,7 +140,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/terrain"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
             />
 
@@ -142,8 +152,9 @@
             android:textColor="@color/white"
             android:layout_below="@id/surfaceWater"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textSize="22dp"
+            android:layout_marginBottom="10dp"
             />
 
     </LinearLayout>
