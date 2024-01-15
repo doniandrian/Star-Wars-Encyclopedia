@@ -10,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tugas.tubes2.APICall
 import com.tugas.tubes2.BASE_IMAGE_URL
@@ -31,6 +34,8 @@ class SpeciesDetailFragment : Fragment() {
     private lateinit var homeWorld: TextView
     private lateinit var language: TextView
     private lateinit var description: TextView
+
+    private lateinit var list: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +59,7 @@ class SpeciesDetailFragment : Fragment() {
         homeWorld = binding.homeWorld
         language = binding.language
         description = binding.description
+        list = binding.listViewSpecies
 
         val mainActivity = activity as MainActivity
         val bundle = this.arguments
@@ -79,6 +85,18 @@ class SpeciesDetailFragment : Fragment() {
                 homeWorld.text = "HomeWorld: " + speciesDetailList.properties.homeworld
                 language.text = "Language: " + speciesDetailList.properties.language
                 description.text = "Description: " + speciesDetailList.description
+
+
+
+                val speciesDetailAdapter = SpeciesDetailAdapter(speciesDetailList.properties.people)
+                list.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    setHasFixedSize(true)
+                    speciesDetailAdapter.notifyDataSetChanged()
+                    adapter = speciesDetailAdapter
+
+                }
+
 
             }
 
