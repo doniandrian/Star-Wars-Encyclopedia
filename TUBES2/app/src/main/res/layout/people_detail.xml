@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg"
@@ -13,34 +14,45 @@
 
         >
 
-
-
+        <TextView
+            android:id="@+id/deskripsiTxtPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="30dp"
+            android:text="Deskripsi"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
 
         <ImageView
             android:id="@+id/imageItem"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buttonBack"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/picture_holder_icon" />
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/picture_holder_icon"
+            />
 
         <TextView
             android:id="@+id/namaItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageItem"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
             android:text="People Name"
-            android:textColor="@color/white"
-            android:textSize="35dp" />
+            android:textColor="@color/item_name"
+            android:textSize="35dp"
+            android:layout_marginBottom="10dp"
+            />
 
         <TextView
             android:id="@+id/heightTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/namaItem"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Height:"
             android:textColor="@color/white"
@@ -51,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/heightTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Mass:"
             android:textColor="@color/white"
@@ -62,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/massTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Hair Color:"
             android:textColor="@color/white"
@@ -73,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/hairColorTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Skin Color:"
             android:textColor="@color/white"
@@ -84,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/skinColorTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Eye Color:"
             android:textColor="@color/white"
@@ -95,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/eyeColorTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Birth Year:"
             android:textColor="@color/white"
@@ -106,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/birthYearTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Gender:"
             android:textColor="@color/white"
@@ -117,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/genderTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Home World:"
             android:textColor="@color/white"
@@ -128,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/homeWorldTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:text="Description:"
             android:textColor="@color/white"

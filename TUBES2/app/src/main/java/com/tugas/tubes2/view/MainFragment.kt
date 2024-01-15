@@ -12,8 +12,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import com.tugas.tubes2.APICall
-import com.tugas.tubes2.APICall_Films
-import com.tugas.tubes2.R
 import com.tugas.tubes2.databinding.FragmentMainBinding
 import com.tugas.tubes2.model.DataResult
 import com.tugas.tubes2.model.FilmsResult
@@ -55,7 +53,7 @@ class MainFragment : Fragment() {
 
             progress_bar.visibility = View.VISIBLE
 
-            APICall_Films.getFilmResult(mainActivity, "films") { filmResult ->
+            APICall.getFilmResult(mainActivity, "films") { filmResult ->
                 val filmsList = filmResult.result
 
                 val adapter = FilmsListAdapter(mainActivity, filmsList)
@@ -156,11 +154,10 @@ class MainFragment : Fragment() {
         })
 
         list_item.setOnItemClickListener { _, _, position, _ ->
-            //check if the item is a people, planets, species, starships, films or vehicles
             if (text_choosed.text == btn_films.text) {
-                val selectedItem = list_item.adapter.getItem(position) as FilmsResult.Film.Properties
+                val selectedItem = list_item.adapter.getItem(position) as FilmsResult.Film
                 val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
+                    putString("url", selectedItem.properties.url)
                 }
 
                 val detailFragment = FilmDetailFragment()

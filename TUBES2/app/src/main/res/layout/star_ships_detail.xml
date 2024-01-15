@@ -13,26 +13,35 @@
 
         >
 
-
-
+        <TextView
+            android:id="@+id/deskripsiTxtStarShips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="30dp"
+            android:text="Deskripsi"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
 
         <ImageView
             android:id="@+id/imageItem"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buttonBack"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/picture_holder_icon" />
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/picture_holder_icon"
+            />
 
         <TextView
             android:id="@+id/namaItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageItem"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
             android:text="Star Ships Name"
-            android:textColor="@color/white"
+            android:textColor="@color/item_name"
             android:textSize="35dp" />
 
         <TextView
@@ -40,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/namaItem"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Model:"
             android:textColor="@color/white"
@@ -51,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/modelTxt"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Starship Class:"
             android:textColor="@color/white"
@@ -62,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/starShipClass"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Manufacturer:"
             android:textColor="@color/white"
@@ -73,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/manufacturer"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Cost in credit:"
             android:textColor="@color/white"
@@ -84,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/costInCredit"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Length:"
             android:textColor="@color/white"
@@ -95,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/length"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Crew:"
             android:textColor="@color/white"
@@ -106,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/crew"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Passenger:"
             android:textColor="@color/white"
@@ -117,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/passenger"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Max atmosphering speed:"
             android:textColor="@color/white"
@@ -128,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/maxSpeed"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Hyper Drive Rating:"
             android:textColor="@color/white"
@@ -141,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/hyperDriveRating"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="MGLT:"
             android:textColor="@color/white"
@@ -153,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/MGLT"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Cargo Capacity:"
             android:textColor="@color/white"
@@ -166,7 +175,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/cargoCap"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Consumables:"
             android:textColor="@color/white"
@@ -178,7 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/consumables"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:text="Description:"
             android:textColor="@color/white"
@@ -193,7 +202,7 @@
             android:textColor="@color/white"
             android:layout_below="@id/description"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="30dp"
             android:textSize="30dp"
             />
 
