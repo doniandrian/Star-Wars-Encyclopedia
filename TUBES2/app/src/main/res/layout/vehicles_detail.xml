@@ -173,51 +173,7 @@
             android:layout_below="@id/consumables"
             />
 
-        <TextView
-            android:id="@+id/titleFilms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:text="Films"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/consumables"
-            />
 
-        <ListView
-            android:id="@+id/listViewFilms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/titleFilms"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            tools:listitem="@layout/template_listview"
-            />
-
-        <TextView
-            android:id="@+id/titlePilots"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:text="Pilots"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/listViewFilms"
-            />
-
-        <ListView
-            android:id="@+id/listViewPilots"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/titlePilots"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            tools:listitem="@layout/template_listview"
-            />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

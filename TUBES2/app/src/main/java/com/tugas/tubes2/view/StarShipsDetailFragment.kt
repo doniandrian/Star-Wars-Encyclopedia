@@ -32,7 +32,6 @@ class StarShipsDetailFragment : Fragment() {
     private lateinit var MGLT: TextView
     private lateinit var cargoCap: TextView
     private lateinit var consumables: TextView
-    private lateinit var pilots: TextView
     private lateinit var description: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +57,6 @@ class StarShipsDetailFragment : Fragment() {
         MGLT = binding.MGLT
         cargoCap = binding.cargoCap
         consumables = binding.consumables
-        pilots = binding.pilots
         description = binding.description
 
 
@@ -87,7 +85,6 @@ class StarShipsDetailFragment : Fragment() {
                 MGLT.text = "MGLT: " + starShipDetail.properties.MGLT
                 cargoCap.text = "Cargo Capacity: " + starShipDetail.properties.cargo_capacity
                 consumables.text = "Consumables: " + starShipDetail.properties.consumables
-                pilots.text = "Pilots: " + starShipDetail.properties.pilots
                 description.text = "Description: " + starShipDetail.description
 
             }

@@ -135,7 +135,7 @@
             android:layout_below="@id/listViewCharacters"
             />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listViewPlanets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
             android:layout_below="@id/listViewPlanets"
             />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listViewStarShips"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,13 +175,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="50dp"
-            android:text="Starships"
+            android:text="@string/vehicles"
             android:textColor="@color/white"
             android:textSize="30dp"
             android:layout_below="@id/listViewStarShips"
             />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listViewVehicles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
             android:layout_below="@id/listViewVehicles"
             />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listViewSpecies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
