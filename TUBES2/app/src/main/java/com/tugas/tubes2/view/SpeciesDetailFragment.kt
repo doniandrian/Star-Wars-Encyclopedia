@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -88,12 +87,12 @@ class SpeciesDetailFragment : Fragment() {
 
 
 
-                val speciesDetailAdapter = SpeciesDetailAdapter(speciesDetailList.properties.people)
+                val peopleDetailAdapter = PeopleDetailAdapter(speciesDetailList.properties.people)
                 list.apply {
                     layoutManager = LinearLayoutManager(activity)
                     setHasFixedSize(true)
-                    speciesDetailAdapter.notifyDataSetChanged()
-                    adapter = speciesDetailAdapter
+                    peopleDetailAdapter.notifyDataSetChanged()
+                    adapter = peopleDetailAdapter
 
                 }
 

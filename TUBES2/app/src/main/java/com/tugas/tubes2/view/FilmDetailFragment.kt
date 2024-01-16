@@ -10,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tugas.tubes2.APICall
 import com.tugas.tubes2.BASE_IMAGE_URL
@@ -27,6 +30,12 @@ class FilmDetailFragment : Fragment() {
     private lateinit var directorTxt: TextView
     private lateinit var releaseDateTxt: TextView
     private lateinit var description: TextView
+    private lateinit var listViewCharacters: RecyclerView
+    private lateinit var listViewPlanets: RecyclerView
+    private lateinit var listViewStarships: RecyclerView
+    private lateinit var listViewVehicles: RecyclerView
+    private lateinit var listViewSpecies: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +54,11 @@ class FilmDetailFragment : Fragment() {
         directorTxt = binding.directorTxt
         releaseDateTxt = binding.releaseDateTxt
         description = binding.description
+        listViewCharacters = binding.listViewCharacters
+        listViewPlanets = binding.listViewPlanets
+        listViewStarships = binding.listViewStarShips
+        listViewVehicles = binding.listViewVehicles
+        listViewSpecies = binding.listViewSpecies
 
 
         val mainActivity = activity as MainActivity
@@ -66,6 +80,54 @@ class FilmDetailFragment : Fragment() {
                 directorTxt.text = "Director: " + FilmsDetail.properties.director
                 releaseDateTxt.text = "Release Date: " + FilmsDetail.properties.release_date
                 description.text ="Description: " + FilmsDetail.description
+
+                //recycler view people
+                val peopleDetailAdapter = PeopleDetailAdapter(FilmsDetail.properties.characters)
+                listViewCharacters.apply {
+                    layoutManager = GridLayoutManager(activity,2)
+                    setHasFixedSize(true)
+                    peopleDetailAdapter.notifyDataSetChanged()
+                    adapter = peopleDetailAdapter
+                }
+
+                //recycler view planets
+                val planetsDetailAdapter = PlanetsDetailAdapter(FilmsDetail.properties.planets)
+                listViewPlanets.apply {
+                    layoutManager = GridLayoutManager(activity,2)
+                    setHasFixedSize(true)
+                    planetsDetailAdapter.notifyDataSetChanged()
+                    adapter = planetsDetailAdapter
+                }
+
+                //recycler view starships
+                val starshipsDetailAdapter = StarshipsDetailAdapter(FilmsDetail.properties.starships)
+                listViewStarships.apply {
+                    layoutManager = GridLayoutManager(activity,2)
+                    setHasFixedSize(true)
+                    starshipsDetailAdapter.notifyDataSetChanged()
+                    adapter = starshipsDetailAdapter
+                }
+
+                //recycler view vehicles
+                val vehiclesDetailAdapter = VehiclesDetailAdapter(FilmsDetail.properties.vehicles)
+                listViewVehicles.apply {
+                    layoutManager = GridLayoutManager(activity,2)
+                    setHasFixedSize(true)
+                    vehiclesDetailAdapter.notifyDataSetChanged()
+                    adapter = vehiclesDetailAdapter
+                }
+
+                //recycler view species
+                val speciesDetailAdapter = SpeciesDetailAdapter(FilmsDetail.properties.species)
+                listViewSpecies.apply {
+                    layoutManager = GridLayoutManager(activity,2)
+                    setHasFixedSize(true)
+                    speciesDetailAdapter.notifyDataSetChanged()
+                    adapter = speciesDetailAdapter
+                }
+
+
+
             }
 
         }else{

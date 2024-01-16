@@ -13,31 +13,31 @@ import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
 
 //adapter untuk menampilkan list planet di film
-class SpeciesDetailAdapter(val SpeciesDetail: List<String>): RecyclerView.Adapter<SpeciesDetailAdapter.SpeciesDetailViewHolder>() {
+class VehiclesDetailAdapter(val VehiclesDetail: List<String>): RecyclerView.Adapter<VehiclesDetailAdapter.VehiclesDetailViewHolder>() {
 
-    class SpeciesDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class VehiclesDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val namaitem = view.findViewById<TextView>(R.id.listName)
         val image = view.findViewById<ImageView>(R.id.listImg)
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpeciesDetailViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehiclesDetailViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.template_listview, parent, false)
-        return SpeciesDetailViewHolder(view)
+        return VehiclesDetailViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return SpeciesDetail.size
+        return VehiclesDetail.size
     }
 
-    override fun onBindViewHolder(holder: SpeciesDetailViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: VehiclesDetailViewHolder, position: Int) {
         //call api
         //ambil data people dari api
-        APICall.getPeopleDetail(holder.itemView.context, "species/" + getPersonIdFromUrl(SpeciesDetail[position])){ speciesDetail ->
-            holder.namaitem.text = speciesDetail.result.properties.name
+        APICall.getPeopleDetail(holder.itemView.context, "vehicles/" + getPersonIdFromUrl(VehiclesDetail[position])){ vehiclesDetail ->
+            holder.namaitem.text = vehiclesDetail.result.properties.name
 
             Glide.with(holder.itemView.context)
-                .load(BASE_IMAGE_URL + "species/" + speciesDetail.result.uid + ".jpg")
+                .load(BASE_IMAGE_URL + "vehicles/" + vehiclesDetail.result.uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .centerCrop()
