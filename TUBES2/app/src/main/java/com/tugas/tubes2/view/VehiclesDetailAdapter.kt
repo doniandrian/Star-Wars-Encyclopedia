@@ -39,7 +39,7 @@ class VehiclesDetailAdapter(val VehiclesDetail: List<String>): RecyclerView.Adap
             Glide.with(holder.itemView.context)
                 .load(BASE_IMAGE_URL + "vehicles/" + vehiclesDetail.result.uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.picture_error_icon)
                 .centerCrop()
                 .into(holder.image)
 

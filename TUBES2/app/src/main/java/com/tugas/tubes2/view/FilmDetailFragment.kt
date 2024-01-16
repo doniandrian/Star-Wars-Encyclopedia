@@ -70,6 +70,7 @@ class FilmDetailFragment : Fragment() {
             //glide
             Glide.with(this)
                 .load("$BASE_IMAGE_URL/films/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getFilmsDetail(mainActivity, "films/$nomor") { filmsDetail ->

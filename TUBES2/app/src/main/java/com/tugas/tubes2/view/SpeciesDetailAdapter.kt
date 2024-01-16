@@ -39,7 +39,7 @@ class SpeciesDetailAdapter(val SpeciesDetail: List<String>): RecyclerView.Adapte
             Glide.with(holder.itemView.context)
                 .load(BASE_IMAGE_URL + "species/" + speciesDetail.result.uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.picture_error_icon)
                 .centerCrop()
                 .into(holder.image)
 
