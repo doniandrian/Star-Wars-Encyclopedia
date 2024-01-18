@@ -22,15 +22,22 @@
             android:textColor="@color/white"
             android:textSize="35dp" />
 
-        <ImageView
-            android:id="@+id/imageItem"
+        <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonBack"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:src="@drawable/picture_holder_icon"
-            />
+            app:cardCornerRadius="18dp">
+            <ImageView
+                android:id="@+id/imageItem"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonBack"
+                android:layout_gravity="center"
+                android:src="@drawable/picture_holder_icon"
+                />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/namaItem"
