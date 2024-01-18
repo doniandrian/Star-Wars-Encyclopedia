@@ -10,15 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.tugas.tubes2.APICall
-import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
 import com.tugas.tubes2.databinding.FilmDetailBinding
-import com.tugas.tubes2.databinding.PeopleDetailBinding
+import com.tugas.tubes2.presenter.DetailPresenter
 
 
 class FilmDetailFragment : Fragment() {
@@ -35,7 +30,7 @@ class FilmDetailFragment : Fragment() {
     private lateinit var listViewStarships: RecyclerView
     private lateinit var listViewVehicles: RecyclerView
     private lateinit var listViewSpecies: RecyclerView
-
+    private lateinit var presenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,81 +57,11 @@ class FilmDetailFragment : Fragment() {
 
 
         val mainActivity = activity as MainActivity
+        presenter = DetailPresenter()
 
         val bundle = this.arguments
-        if (bundle != null) {
-            val url = bundle.getString("url")
-            val nomor = url?.substringAfterLast("/")
-            //glide
-            Glide.with(this)
-                .load("$BASE_IMAGE_URL/films/$nomor.jpg")
-                .into(image)
-
-            APICall.getFilmsDetail(mainActivity, "films/$nomor") { filmsDetail ->
-                val FilmsDetail = filmsDetail.result
-                namaitem.text = FilmsDetail.properties.title
-                producerTxt.text = "Producer: " + FilmsDetail.properties.producer
-                episodeTxt.text = "Episode: " + FilmsDetail.properties.episode_id.toString()
-                directorTxt.text = "Director: " + FilmsDetail.properties.director
-                releaseDateTxt.text = "Release Date: " + FilmsDetail.properties.release_date
-                description.text ="Description: " + FilmsDetail.description
-
-                //recycler view people
-                val peopleDetailAdapter = PeopleDetailAdapter(FilmsDetail.properties.characters)
-                listViewCharacters.apply {
-                    layoutManager = GridLayoutManager(activity,2)
-                    setHasFixedSize(true)
-                    peopleDetailAdapter.notifyDataSetChanged()
-                    adapter = peopleDetailAdapter
-                }
-
-                //recycler view planets
-                val planetsDetailAdapter = PlanetsDetailAdapter(FilmsDetail.properties.planets)
-                listViewPlanets.apply {
-                    layoutManager = GridLayoutManager(activity,2)
-                    setHasFixedSize(true)
-                    planetsDetailAdapter.notifyDataSetChanged()
-                    adapter = planetsDetailAdapter
-                }
-
-                //recycler view starships
-                val starshipsDetailAdapter = StarshipsDetailAdapter(FilmsDetail.properties.starships)
-                listViewStarships.apply {
-                    layoutManager = GridLayoutManager(activity,2)
-                    setHasFixedSize(true)
-                    starshipsDetailAdapter.notifyDataSetChanged()
-                    adapter = starshipsDetailAdapter
-                }
-
-                //recycler view vehicles
-                val vehiclesDetailAdapter = VehiclesDetailAdapter(FilmsDetail.properties.vehicles)
-                listViewVehicles.apply {
-                    layoutManager = GridLayoutManager(activity,2)
-                    setHasFixedSize(true)
-                    vehiclesDetailAdapter.notifyDataSetChanged()
-                    adapter = vehiclesDetailAdapter
-                }
-
-                //recycler view species
-                val speciesDetailAdapter = SpeciesDetailAdapter(FilmsDetail.properties.species)
-                listViewSpecies.apply {
-                    layoutManager = GridLayoutManager(activity,2)
-                    setHasFixedSize(true)
-                    speciesDetailAdapter.notifyDataSetChanged()
-                    adapter = speciesDetailAdapter
-                }
-
-
-
-            }
-
-        }else{
-            namaitem.text = "Data tidak ditemukan"
-        }
-
+        presenter.retriveDataFilms(bundle, mainActivity, this, image, namaitem, producerTxt, episodeTxt, directorTxt, releaseDateTxt, description, listViewCharacters, listViewPlanets, listViewSpecies, listViewVehicles, listViewStarships)
         return binding.root
-
-
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: android.view.MenuInflater) {
         inflater.inflate(R.menu.menu_back, menu)
@@ -146,8 +71,8 @@ class FilmDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_list_back -> {
-                val activity = requireActivity() as MainActivity
-                activity.changePage(MainFragment())
+                activity?.supportFragmentManager?.popBackStack()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -155,6 +80,4 @@ class FilmDetailFragment : Fragment() {
         //referensi:
         //https://developer.android.com/guide/topics/ui/menus?hl=id
     }
-
-
 }

@@ -10,12 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.tugas.tubes2.APICall
-import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
-import com.tugas.tubes2.databinding.PeopleDetailBinding
 import com.tugas.tubes2.databinding.PlanetDetailBinding
+import com.tugas.tubes2.presenter.DetailPresenter
 
 
 class PlanetDetailFragment : Fragment() {
@@ -31,6 +28,7 @@ class PlanetDetailFragment : Fragment() {
     private lateinit var terrain: TextView
     private lateinit var surfaceWater: TextView
     private lateinit var description: TextView
+    private lateinit var presenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,36 +54,11 @@ class PlanetDetailFragment : Fragment() {
         description = binding.description
 
         val mainActivity = activity as MainActivity
+        presenter = DetailPresenter()
 
         val bundle = this.arguments
-        if (bundle != null) {
-            val url = bundle.getString("url")
-            val nomor = url?.substringAfterLast("/")
-
-            //glide
-            Glide.with(this)
-                .load("$BASE_IMAGE_URL/planets/$nomor.jpg")
-                .into(image)
-
-            APICall.getPlanetsDetail(mainActivity, "planets/$nomor") { planetDetail ->
-                val planetDetailList = planetDetail.result
-                namaitem.text = planetDetailList.properties.name
-                diameter.text = "Diameter: " + planetDetailList.properties.diameter
-                rotation.text = "Rotation: " +planetDetailList.properties.rotation_period
-                orbital.text = "Orbital: " +planetDetailList.properties.orbital_period
-                gravity.text = "Gravity: " +planetDetailList.properties.gravity
-                population.text = "Population: " +planetDetailList.properties.population
-                climate.text = "Climate: " +planetDetailList.properties.climate
-                terrain.text = "Terrain: " +planetDetailList.properties.terrain
-                surfaceWater.text = "SurfaceWater: " +planetDetailList.properties.surface_water
-                description.text = "Description: " +planetDetailList.description
-
-            }
-
-        }else{
-            namaitem.text = "Data tidak ditemukan"
-        }
-            return binding.root
+        presenter.retriveDataPlanet(bundle, mainActivity, this, image, namaitem, diameter, rotation, orbital, gravity, population, climate, terrain, surfaceWater, description)
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: android.view.MenuInflater) {
@@ -96,8 +69,8 @@ class PlanetDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_list_back -> {
-                val activity = requireActivity() as MainActivity
-                activity.changePage(MainFragment())
+                activity?.supportFragmentManager?.popBackStack()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -105,6 +78,4 @@ class PlanetDetailFragment : Fragment() {
         //referensi:
         //https://developer.android.com/guide/topics/ui/menus?hl=id
     }
-
-
 }

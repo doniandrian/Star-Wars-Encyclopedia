@@ -7,12 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.tugas.tubes2.R
+import com.tugas.tubes2.view.presenterInterface.IMainFragment
 
 class MainActivity : AppCompatActivity(), IMainFragment.Ui {
     private lateinit var binding: ActivityMainBinding
     private val fragmentManager: FragmentManager = supportFragmentManager
     private val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +22,13 @@ class MainActivity : AppCompatActivity(), IMainFragment.Ui {
 
         fragmentTransaction.replace(R.id.fragment_container, MainFragment())
         fragmentTransaction.commit()
-
-
     }
 
     override fun changePage(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.add(R.id.fragment_container, fragment)
         fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()    }
+        fragmentTransaction.commit()
+    }
 }

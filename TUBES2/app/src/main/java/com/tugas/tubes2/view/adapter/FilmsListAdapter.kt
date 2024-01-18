@@ -1,20 +1,17 @@
-package com.tugas.tubes2.view
+package com.tugas.tubes2.view.adapter
 
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import com.bumptech.glide.Glide
 import android.widget.Filter
 import android.widget.Filterable
-import com.tugas.tubes2.BASE_IMAGE_URL
-import com.tugas.tubes2.R
+import com.tugas.tubes2.databinding.ItemListBinding
 import com.tugas.tubes2.model.FilmsResult
+import com.tugas.tubes2.presenter.MainAdapterPresenter
 import java.util.ArrayList
 
-class FilmsListAdapter(private val activity: Activity, private val filmList: List<FilmsResult.Film>) : BaseAdapter(), Filterable {
+class FilmsListAdapter(private val activity: Activity, private val filmList: List<FilmsResult.Film>, private val presenter: MainAdapterPresenter) : BaseAdapter(), Filterable {
 
     private var filteredFilms: List<FilmsResult.Film> = filmList
     override fun getCount(): Int {
@@ -30,23 +27,15 @@ class FilmsListAdapter(private val activity: Activity, private val filmList: Lis
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = convertView ?: activity.layoutInflater.inflate(R.layout.item_list, null)
-        val viewHolder = ViewHolder(view)
+        val binding = ItemListBinding.inflate(activity.layoutInflater)
+        val viewHolder = ViewHolder(binding)
 
         viewHolder.name.text = filteredFilms[position].properties.title
         viewHolder.uid.text = "Release Date: " + filteredFilms[position].properties.release_date
 
-        //ambil category dari url
-        val category = filteredFilms[position].properties.url.split("/")[4]
-        Glide.with(viewHolder.image.context)
-            .load(BASE_IMAGE_URL + category + "/" + filteredFilms[position].uid + ".jpg")
-            .placeholder(R.drawable.ic_launcher_foreground)
-            .error(R.drawable.ic_launcher_foreground)
-            .centerCrop()
+        presenter.addImageFilms(filteredFilms, position, viewHolder)
 
-            .into(viewHolder.image)
-
-        return view
+        return binding.root
     }
 
     override fun getFilter(): Filter {
@@ -82,9 +71,12 @@ class FilmsListAdapter(private val activity: Activity, private val filmList: Lis
         }
     }
 
-    private class ViewHolder(view: View) {
-        val name: TextView = view.findViewById(R.id.name)
-        val uid: TextView = view.findViewById(R.id.uid)
-        val image: ImageView = view.findViewById(R.id.item_img)
+    class ViewHolder(binding: ItemListBinding) {
+        val name = binding.name
+        val uid = binding.uid
+        var image = binding.itemImg
     }
 }
+
+// REFERENSI
+// 1. https://stackoverflow.com/questions/12456525/how-to-filter-listview-using-getfilter-in-baseadapter (getFilter())
