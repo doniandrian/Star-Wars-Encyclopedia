@@ -68,6 +68,7 @@ class VehiclesDetailFragment : Fragment() {
             //glide
             Glide.with(this)
                 .load("$BASE_IMAGE_URL/vehicles/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getVehiclesDetail(mainActivity, "vehicles/$nomor") { vehilesDetail ->

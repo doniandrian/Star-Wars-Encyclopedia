@@ -39,7 +39,7 @@ class StarshipsDetailAdapter(val StarShipsDetail: List<String>): RecyclerView.Ad
             Glide.with(holder.itemView.context)
                 .load(BASE_IMAGE_URL + "starships/" + starShipsDetail.result.uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.picture_error_icon)
                 .centerCrop()
                 .into(holder.image)
 

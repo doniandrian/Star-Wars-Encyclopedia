@@ -65,6 +65,7 @@ class PlanetDetailFragment : Fragment() {
             //glide
             Glide.with(this)
                 .load("$BASE_IMAGE_URL/planets/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getPlanetsDetail(mainActivity, "planets/$nomor") { planetDetail ->

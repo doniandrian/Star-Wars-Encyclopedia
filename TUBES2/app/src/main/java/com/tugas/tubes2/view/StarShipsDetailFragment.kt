@@ -69,6 +69,7 @@ class StarShipsDetailFragment : Fragment() {
             //glide
             Glide.with(this)
                 .load("$BASE_IMAGE_URL/starships/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getStarshipsDetail(mainActivity, "starships/$nomor") { starshipsDetail ->

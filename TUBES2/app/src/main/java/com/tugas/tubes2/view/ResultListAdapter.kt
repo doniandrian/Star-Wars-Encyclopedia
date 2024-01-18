@@ -42,7 +42,7 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
             Glide.with(viewHolder.image.context)
                 .load(BASE_IMAGE_URL + "characters/" + filteredResults[position].uid + ".jpg")
                 .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.picture_error_icon)
                 .centerCrop()
                 .into(viewHolder.image)
         }

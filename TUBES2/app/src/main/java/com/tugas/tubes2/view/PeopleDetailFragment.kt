@@ -67,6 +67,7 @@ class PeopleDetailFragment : Fragment() {
             //glide
             Glide.with(this)
                 .load("$BASE_IMAGE_URL/characters/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getPeopleDetail(mainActivity, "people/$nomor") { PeopleDetail ->
