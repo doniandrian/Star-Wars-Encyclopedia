@@ -10,11 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.tugas.tubes2.APICall
-import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
 import com.tugas.tubes2.databinding.PeopleDetailBinding
+import com.tugas.tubes2.presenter.DetailPresenter
 
 
 class PeopleDetailFragment : Fragment() {
@@ -30,9 +28,7 @@ class PeopleDetailFragment : Fragment() {
     private lateinit var gender: TextView
     private lateinit var homeworld: TextView
     private lateinit var description: TextView
-
-
-
+    private lateinit var presenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,39 +54,12 @@ class PeopleDetailFragment : Fragment() {
         description = binding.description
 
         val mainActivity = activity as MainActivity
+        presenter = DetailPresenter()
+
 
         //retrive data from bundle
         val bundle = this.arguments
-        if (bundle != null) {
-            val url = bundle.getString("url")
-            val nomor = url?.substringAfterLast("/")
-            //glide
-            Glide.with(this)
-                .load("$BASE_IMAGE_URL/characters/$nomor.jpg")
-                .error(R.drawable.picture_error_icon)
-                .into(image)
-
-            APICall.getPeopleDetail(mainActivity, "people/$nomor") { PeopleDetail ->
-                val peopleDetail = PeopleDetail.result
-                namaitem.text = peopleDetail.properties.name
-                height.text ="Height: " + peopleDetail.properties.height
-                mass.text = "Mass: " +peopleDetail.properties.mass
-                haircolor.text ="Hair Color: " + peopleDetail.properties.hair_color
-                skincolor.text = "Skin Color: " +peopleDetail.properties.skin_color
-                eyecolor.text = "Eye Color: " +peopleDetail.properties.eye_color
-                birthyear.text ="BirthYear: " + peopleDetail.properties.birth_year
-                gender.text ="Gender: " + peopleDetail.properties.gender
-                homeworld.text ="HomeWorld: " + peopleDetail.properties.homeworld
-                description.text ="Description: " + peopleDetail.description
-
-            }
-
-        }else{
-            namaitem.text = "Data tidak ditemukan"
-        }
-
-
-
+        presenter.retriveDataPeople(bundle, image, mainActivity, this, namaitem, height, mass, haircolor, skincolor, eyecolor, birthyear, gender, homeworld, description)
         return binding.root
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: android.view.MenuInflater) {
@@ -101,8 +70,8 @@ class PeopleDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_list_back -> {
-                val activity = requireActivity() as MainActivity
-                activity.changePage(MainFragment())
+                activity?.supportFragmentManager?.popBackStack()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -110,6 +79,4 @@ class PeopleDetailFragment : Fragment() {
         //referensi:
         //https://developer.android.com/guide/topics/ui/menus?hl=id
     }
-
-
 }

@@ -19,7 +19,6 @@ interface APIService {
     @GET
     fun getFilmsResult(@Url endpoint: String): Call<FilmsResult>
 
-
     @GET
     fun getPeopleDetail(@Url endpoint: String): Call<PeopleDetail>
 
@@ -38,3 +37,6 @@ interface APIService {
     @GET
     fun getVehiclesDetail(@Url endpoint: String): Call<VehiclesDetail>
 }
+
+// REFERENSI
+// 1. https://www.geeksforgeeks.org/how-to-get-data-from-api-using-retrofit-library-in-android/ (Retrofit)

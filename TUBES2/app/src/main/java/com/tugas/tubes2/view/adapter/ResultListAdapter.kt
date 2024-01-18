@@ -1,21 +1,17 @@
-package com.tugas.tubes2.view
+package com.tugas.tubes2.view.adapter
 
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import com.bumptech.glide.Glide
 import android.widget.Filter
 import android.widget.Filterable
-import com.tugas.tubes2.APICall
-import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.model.DataResult
-import com.tugas.tubes2.R
+import com.tugas.tubes2.databinding.ItemListBinding
+import com.tugas.tubes2.presenter.MainAdapterPresenter
 import java.util.ArrayList
 
-class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>) : BaseAdapter(), Filterable {
+class ResultListAdapter(private val activity: Activity, private val resultList: List<DataResult.Result>, private val presenter: MainAdapterPresenter) : BaseAdapter(), Filterable {
 
     private var filteredResults: List<DataResult.Result> = resultList
 
@@ -32,35 +28,14 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = convertView ?: activity.layoutInflater.inflate(R.layout.item_list, null)
-        val viewHolder = ViewHolder(view)
+        val binding = ItemListBinding.inflate(activity.layoutInflater)
+        val viewHolder = ViewHolder(binding)
 
         viewHolder.name.text = filteredResults[position].name
         viewHolder.uid.text = "UID : " + filteredResults[position].uid
 
-        if (filteredResults[position].url.contains("people")) {
-            Glide.with(viewHolder.image.context)
-                .load(BASE_IMAGE_URL + "characters/" + filteredResults[position].uid + ".jpg")
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.picture_error_icon)
-                .centerCrop()
-                .into(viewHolder.image)
-        }
-        else {
-            //ambil category dari url
-            val category = filteredResults[position].url.split("/")[4]
-
-            Glide.with(viewHolder.image.context)
-                .load(BASE_IMAGE_URL + category + "/" + filteredResults[position].uid + ".jpg")
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .error(R.drawable.ic_launcher_foreground)
-                .centerCrop()
-                .into(viewHolder.image)
-        }
-
-
-
-        return view
+        presenter.addImage(filteredResults, position, viewHolder)
+        return binding.root
     }
 
     override fun getFilter(): Filter {
@@ -95,10 +70,12 @@ class ResultListAdapter(private val activity: Activity, private val resultList: 
             }
         }
     }
-
-    private class ViewHolder(view: View) {
-        val name: TextView = view.findViewById(R.id.name)
-        val uid: TextView = view.findViewById(R.id.uid)
-        var image: ImageView = view.findViewById(R.id.item_img)
+    class ViewHolder(binding: ItemListBinding) {
+        val name = binding.name
+        val uid = binding.uid
+        var image = binding.itemImg
     }
 }
+
+// REFERENSI
+// 1. https://stackoverflow.com/questions/12456525/how-to-filter-listview-using-getfilter-in-baseadapter (getFilter())

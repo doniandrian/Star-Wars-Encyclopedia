@@ -179,7 +179,7 @@ object APICall {
             })
         }
     }
-
-
-
 }
+
+// REFERENSI
+// 1. https://www.geeksforgeeks.org/how-to-get-data-from-api-using-retrofit-library-in-android/ (Retrofit)

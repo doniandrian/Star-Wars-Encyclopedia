@@ -10,14 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.tugas.tubes2.APICall
-import com.tugas.tubes2.BASE_IMAGE_URL
 import com.tugas.tubes2.R
 import com.tugas.tubes2.databinding.SpeciesDetailBinding
-
+import com.tugas.tubes2.presenter.DetailPresenter
 
 class SpeciesDetailFragment : Fragment() {
     private lateinit var binding: SpeciesDetailBinding
@@ -33,8 +29,8 @@ class SpeciesDetailFragment : Fragment() {
     private lateinit var homeWorld: TextView
     private lateinit var language: TextView
     private lateinit var description: TextView
-
     private lateinit var list: RecyclerView
+    private lateinit var presenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,50 +57,10 @@ class SpeciesDetailFragment : Fragment() {
         list = binding.listViewSpecies
 
         val mainActivity = activity as MainActivity
+        presenter = DetailPresenter()
+
         val bundle = this.arguments
-        if (bundle != null) {
-            val url = bundle.getString("url")
-            val nomor = url?.substringAfterLast("/")
-
-            //glide
-            Glide.with(this)
-                .load("$BASE_IMAGE_URL/species/$nomor.jpg")
-                .error(R.drawable.picture_error_icon)
-                .into(image)
-
-            APICall.getSpeciesDetail(mainActivity, "species/$nomor") { speciesDetail ->
-                val speciesDetailList = speciesDetail.result
-                namaitem.text = speciesDetailList.properties.name
-                classification.text = "Classification: " + speciesDetailList.properties.classification
-                designation.text = "Designation: " + speciesDetailList.properties.designation
-                averageHeight.text = "Average Height: " + speciesDetailList.properties.average_height
-                averageLifeSpan.text = "Average Life Span: " + speciesDetailList.properties.average_lifespan
-                hairColor.text = "Hair Color: " + speciesDetailList.properties.hair_colors
-                skinColor.text = "Skin Color: " + speciesDetailList.properties.skin_colors
-                eyeColor.text = "Eye Color: " + speciesDetailList.properties.eye_colors
-                homeWorld.text = "HomeWorld: " + speciesDetailList.properties.homeworld
-                language.text = "Language: " + speciesDetailList.properties.language
-                description.text = "Description: " + speciesDetailList.description
-
-
-
-                val peopleDetailAdapter = PeopleDetailAdapter(speciesDetailList.properties.people)
-                list.apply {
-                    layoutManager = LinearLayoutManager(activity)
-                    setHasFixedSize(true)
-                    peopleDetailAdapter.notifyDataSetChanged()
-                    adapter = peopleDetailAdapter
-
-                }
-
-
-            }
-
-        }else{
-            namaitem.text = "Data tidak ditemukan"
-        }
-
-
+        presenter.retriveDataSpecies(bundle, mainActivity, this, image, namaitem, classification, designation, averageHeight, averageLifeSpan, hairColor, skinColor, eyeColor, homeWorld, language, description, list)
         return binding.root
     }
 
@@ -116,8 +72,8 @@ class SpeciesDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_list_back -> {
-                val activity = requireActivity() as MainActivity
-                activity.changePage(MainFragment())
+                activity?.supportFragmentManager?.popBackStack()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -125,6 +81,4 @@ class SpeciesDetailFragment : Fragment() {
         //referensi:
         //https://developer.android.com/guide/topics/ui/menus?hl=id
     }
-
-
 }

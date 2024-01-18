@@ -15,6 +15,7 @@ import com.tugas.tubes2.APICall
 import com.tugas.tubes2.databinding.FragmentMainBinding
 import com.tugas.tubes2.model.DataResult
 import com.tugas.tubes2.model.FilmsResult
+import com.tugas.tubes2.presenter.MainPresenter
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -28,6 +29,7 @@ class MainFragment : Fragment() {
     private lateinit var search_view: SearchView
     private lateinit var list_item: ListView
     private lateinit var progress_bar: ProgressBar
+    private lateinit var mainPresenter: MainPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,97 +47,65 @@ class MainFragment : Fragment() {
         search_view = binding.searchView
         list_item = binding.listItem
         progress_bar = binding.loading
+
         var mainActivity = activity as MainActivity
+        mainPresenter = MainPresenter()
+
+        search_view.visibility = View.GONE
 
         btn_films.setOnClickListener {
             text_choosed.text = btn_films.text
             Log.d("MainFragment", "btn_films clicked")
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getFilmResult(mainActivity, "films") { filmResult ->
-                val filmsList = filmResult.result
-
-                val adapter = FilmsListAdapter(mainActivity, filmsList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult_Films(mainActivity, "films", list_item, progress_bar)
         }
 
         btn_people.setOnClickListener {
             text_choosed.text = btn_people.text
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getResult(mainActivity, "people?page=1&limit=83") { dataResult ->
-                val peopleList = dataResult.results
-
-                val adapter = ResultListAdapter(mainActivity, peopleList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult(mainActivity, "people?page=1&limit=83", list_item, progress_bar)
         }
 
         btn_planets.setOnClickListener {
             text_choosed.text = btn_planets.text
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getResult(mainActivity, "planets?page=1&limit=60") { dataResult ->
-                val planetsList = dataResult.results
-
-                val adapter = ResultListAdapter(mainActivity, planetsList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult(mainActivity, "planets?page=1&limit=60", list_item, progress_bar)
         }
 
         btn_species.setOnClickListener {
             text_choosed.text = btn_species.text
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getResult(mainActivity, "species?page=1&limit=37") { dataResult ->
-                val speciesList = dataResult.results
-
-                val adapter = ResultListAdapter(mainActivity, speciesList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult(mainActivity, "species?page=1&limit=37", list_item, progress_bar)
         }
 
         btn_starships.setOnClickListener {
             text_choosed.text = btn_starships.text
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getResult(mainActivity, "starships?page=1&limit=36") { dataResult ->
-                val starshipsList = dataResult.results
-
-                val adapter = ResultListAdapter(mainActivity, starshipsList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult(mainActivity, "starships?page=1&limit=36", list_item, progress_bar)
         }
 
         btn_vehicles.setOnClickListener {
             text_choosed.text = btn_vehicles.text
 
             progress_bar.visibility = View.VISIBLE
+            search_view.visibility = View.VISIBLE
 
-            APICall.getResult(mainActivity, "vehicles?page=1&limit=39") { dataResult ->
-                val vehiclesList = dataResult.results
-
-                val adapter = ResultListAdapter(mainActivity, vehiclesList)
-                list_item.adapter = adapter
-
-                progress_bar.visibility = View.GONE
-            }
+            mainPresenter.getAPIResult(mainActivity, "vehicles?page=1&limit=39", list_item, progress_bar)
         }
 
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -143,80 +113,18 @@ class MainFragment : Fragment() {
                 return false
             }
             override fun onQueryTextChange(newText: String?): Boolean {
-                if (text_choosed.text == btn_films.text) {
-                    (list_item.adapter as FilmsListAdapter).filter.filter(newText)
-                }
-                else {
-                    (list_item.adapter as ResultListAdapter).filter.filter(newText)
-                }
+                mainPresenter.onQueryTextChange(newText, text_choosed, btn_films, list_item)
                 return true
             }
         })
 
         list_item.setOnItemClickListener { _, _, position, _ ->
-            if (text_choosed.text == btn_films.text) {
-                val selectedItem = list_item.adapter.getItem(position) as FilmsResult.Film
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.properties.url)
-                }
-
-                val detailFragment = FilmDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-            }
-            else if (text_choosed.text == btn_people.text) {
-                val selectedItem = list_item.adapter.getItem(position) as DataResult.Result
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
-                }
-
-                val detailFragment = PeopleDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-            }else if (text_choosed.text == btn_planets.text) {
-                val selectedItem = list_item.adapter.getItem(position) as DataResult.Result
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
-                }
-
-                val detailFragment = PlanetDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-            }else if (text_choosed.text == btn_species.text) {
-                val selectedItem = list_item.adapter.getItem(position) as DataResult.Result
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
-                }
-
-                val detailFragment = SpeciesDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-            }else if (text_choosed.text == btn_starships.text) {
-                val selectedItem = list_item.adapter.getItem(position) as DataResult.Result
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
-                }
-
-                val detailFragment = StarShipsDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-            }else if (text_choosed.text == btn_vehicles.text) {
-                val selectedItem = list_item.adapter.getItem(position) as DataResult.Result
-                val bundle = Bundle().apply {
-                    putString("url", selectedItem.url)
-                }
-
-                val detailFragment = VehiclesDetailFragment()
-                detailFragment.arguments = bundle
-                mainActivity.changePage(detailFragment)
-
-            }
-
-
+            mainPresenter.clickListener(mainActivity, text_choosed, list_item, btn_films, btn_people, btn_planets, btn_species, btn_starships, btn_vehicles, position)
         }
-
         return binding.root
     }
-
-
 }
+
+// REFERENSI
+// 1. https://www.geeksforgeeks.org/how-to-get-data-from-api-using-retrofit-library-in-android/ (Retrofit)
+// 2. https://medium.com/@armanansari04.edugaon/how-to-create-searchview-with-listview-in-android-kotlin-d677a68291e4 (Search)
