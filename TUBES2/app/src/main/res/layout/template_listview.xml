@@ -2,15 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/listImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/picture_holder_icon"
         android:layout_marginLeft="45dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="5dp"
+        app:shapeAppearanceOverlay="@style/CornerStyle"
 
         />
     <TextView
@@ -23,7 +26,7 @@
         android:textSize="30dp"
         android:layout_marginBottom="70dp"
         android:textColor="@color/white"
-        android:fontFamily="sans-serif-medium"
+
         />
 
 </RelativeLayout>

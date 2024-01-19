@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tugas.tubes2.R
@@ -54,7 +55,6 @@ class FilmDetailFragment : Fragment() {
         listViewStarships = binding.listViewStarShips
         listViewVehicles = binding.listViewVehicles
         listViewSpecies = binding.listViewSpecies
-
 
         val mainActivity = activity as MainActivity
         presenter = DetailPresenter()

@@ -1,7 +1,9 @@
 package com.tugas.tubes2.presenter
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,6 +48,8 @@ class DetailPresenter: IDetailFragment.Presenter {
                 directorTxt.text = "Director: " + FilmsDetail.properties.director
                 releaseDateTxt.text = "Release Date: " + FilmsDetail.properties.release_date
                 description.text ="Description: " + FilmsDetail.description
+
+
 
                 //recycler view people
                 val peopleDetailAdapter = PeopleDetailAdapter(FilmsDetail.properties.characters, presenter = DetailAdapterPresenter())
@@ -92,7 +96,6 @@ class DetailPresenter: IDetailFragment.Presenter {
                     adapter = speciesDetailAdapter
                 }
             }
-
         }
         else{
             namaitem.text = "Data tidak ditemukan"

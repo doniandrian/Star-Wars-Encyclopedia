@@ -2,6 +2,7 @@ package com.tugas.tubes2.view.presenterInterface
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tugas.tubes2.view.FilmDetailFragment
