@@ -33,8 +33,5 @@ class StarshipsDetailAdapter(val StarShipsDetail: List<String>, val presenter: D
     override fun onBindViewHolder(holder: StarShipsDetailViewHolder, position: Int) {
         presenter.getDataStarShips(holder, StarShipsDetail, position)
     }
-    private fun getPersonIdFromUrl(url: String): String {
-        //ambil id dari url
-        return url.substringAfterLast("/").removeSuffix("/")
-    }
+
 }

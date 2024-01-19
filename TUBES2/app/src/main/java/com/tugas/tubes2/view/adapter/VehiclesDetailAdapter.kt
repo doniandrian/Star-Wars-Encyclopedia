@@ -33,8 +33,5 @@ class VehiclesDetailAdapter(val VehiclesDetail: List<String>, val presenter: Det
     override fun onBindViewHolder(holder: VehiclesDetailViewHolder, position: Int) {
         presenter.getDataVehicles(holder, VehiclesDetail, position)
     }
-    private fun getPersonIdFromUrl(url: String): String {
-        //ambil id dari url
-        return url.substringAfterLast("/").removeSuffix("/")
-    }
+
 }

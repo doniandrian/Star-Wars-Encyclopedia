@@ -29,7 +29,7 @@ class PlanetsDetailAdapter(val PlanetsDetail: List<String>, val presenter: Detai
 
     override fun onBindViewHolder(holder: PlanetsDetailViewHolder, position: Int) {
         //call api
-        //ambil data people dari api
+        //ambil data planet dari api
         presenter.getDataPlanets(holder, PlanetsDetail, position)
     }
 }
