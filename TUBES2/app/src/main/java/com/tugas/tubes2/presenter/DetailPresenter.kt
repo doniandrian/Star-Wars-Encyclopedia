@@ -140,6 +140,7 @@ class DetailPresenter: IDetailFragment.Presenter {
             //glide
             Glide.with(fragment)
                 .load("$BASE_IMAGE_URL/planets/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getPlanetsDetail(activity, "planets/$nomor") { planetDetail ->
@@ -172,6 +173,7 @@ class DetailPresenter: IDetailFragment.Presenter {
             //glide
             Glide.with(fragment)
                 .load("$BASE_IMAGE_URL/species/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getSpeciesDetail(activity, "species/$nomor") { speciesDetail ->
@@ -214,6 +216,7 @@ class DetailPresenter: IDetailFragment.Presenter {
             //glide
             Glide.with(fragment)
                 .load("$BASE_IMAGE_URL/starships/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getStarshipsDetail(activity, "starships/$nomor") { starshipsDetail ->
@@ -249,6 +252,7 @@ class DetailPresenter: IDetailFragment.Presenter {
             //glide
             Glide.with(fragment)
                 .load("$BASE_IMAGE_URL/vehicles/$nomor.jpg")
+                .error(R.drawable.picture_error_icon)
                 .into(image)
 
             APICall.getVehiclesDetail(activity, "vehicles/$nomor") { vehilesDetail ->

@@ -23,14 +23,21 @@
             android:textColor="@color/white"
             android:textSize="35dp" />
 
-        <ImageView
-            android:id="@+id/imageItem"
+        <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonBack"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:src="@drawable/picture_holder_icon" />
+            app:cardCornerRadius="18dp">
+            <ImageView
+                android:id="@+id/imageItem"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonBack"
+                android:layout_gravity="center"
+                android:src="@drawable/picture_holder_icon" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/namaItem"
@@ -98,137 +105,184 @@
             android:layout_marginTop="10dp"
             android:text="Description:"
             android:textColor="@color/white"
-            android:textSize="22dp" />
-
-        <TextView
-            android:id="@+id/titleCharacters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="50dp"
-            android:text="Characters"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/description"
+            android:textSize="22dp"
+            android:layout_marginBottom="20dp"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewCharacters"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleCharacters"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            tools:listitem="@layout/template_listview"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="-10dp"
-            />
+            android:background="@color/item_detail"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="40dp"
+            >
+            <TextView
+                android:id="@+id/titleCharacters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:text="Characters"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_below="@id/description"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewCharacters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleCharacters"
+                android:layout_weight="0"
+                android:divider="@android:color/background_dark"
+                android:dividerHeight="1dp"
+                tools:listitem="@layout/template_listview"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="-10dp"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/titlePlanets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="50dp"
-            android:text="Planets"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/listViewCharacters"
-            />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewPlanets"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titlePlanets"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="-10dp"
-            tools:listitem="@layout/template_listview"
-            />
+            android:background="@color/item_detail"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:id="@+id/titlePlanets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:text="Planets"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_below="@id/listViewCharacters"
+                android:layout_marginBottom="10dp"
+                />
 
-        <TextView
-            android:id="@+id/titleStarShips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="50dp"
-            android:text="Starships"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/listViewPlanets"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewPlanets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titlePlanets"
+                android:layout_weight="0"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="-10dp"
+                tools:listitem="@layout/template_listview"
+                />
+        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewStarShips"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleStarShips"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            tools:listitem="@layout/template_listview"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="-10dp"
-            />
+            android:background="@color/item_detail"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:id="@+id/titleStarShips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:text="Starships"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_below="@id/listViewPlanets"
+                android:layout_marginBottom="10dp"
+                />
 
-        <TextView
-            android:id="@+id/titleVehicles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/vehicles"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/listViewStarShips"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewStarShips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleStarShips"
+                android:layout_weight="0"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                tools:listitem="@layout/template_listview"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="-10dp"
+                />
+        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewVehicles"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleVehicles"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="-10dp"
-            tools:listitem="@layout/template_listview"
-            />
+            android:background="@color/item_detail"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:id="@+id/titleVehicles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/vehicles"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_below="@id/listViewStarShips"
+                />
 
-        <TextView
-            android:id="@+id/titleSpecies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="50dp"
-            android:text="Species"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_below="@id/listViewVehicles"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewVehicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleVehicles"
+                android:layout_weight="0"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="-10dp"
+                tools:listitem="@layout/template_listview"
+                />
+        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listViewSpecies"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleSpecies"
-            android:layout_weight="0"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="-10dp"
-            tools:listitem="@layout/template_listview"
-            />
+            android:background="@color/item_detail"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:id="@+id/titleSpecies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginBottom="10dp"
+                android:text="Species"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_below="@id/listViewVehicles"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listViewSpecies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleSpecies"
+                android:layout_weight="0"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="-10dp"
+                tools:listitem="@layout/template_listview"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
