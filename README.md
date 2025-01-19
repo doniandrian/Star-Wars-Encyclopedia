@@ -1,1 +1,1 @@
-# Aplikasi Android Star Wars Encyclopedia
+# Aplikasi Android Star Wars Encyclopedia using MVP Architecture
